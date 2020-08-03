@@ -3,7 +3,7 @@
 @include('aplikasi.sidebar')
 <section id="main-content">
           <section class="wrapper"> 
-          	fkshalfhsadlkhsdfal
+          	@yield('content')
           </section>
 </section>
 @include('aplikasi.footer')

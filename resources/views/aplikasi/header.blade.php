@@ -225,7 +225,7 @@
                             <span class="profile-ava">
                                 <img alt="" src="img/avatar1_small.jpg">
                             </span>
-                            <span class="username">Jhon Doe</span>
+                            {{--<span class="username">{{auth()->user()->name}}</span>--}}
                             <b class="caret"></b>
                         </a>
                         <ul class="dropdown-menu extended logout">
@@ -243,8 +243,11 @@
                                 <a href="#"><i class="icon_chat_alt"></i> Chats</a>
                             </li>
                             <li>
-                                <a href="login.html"><i class="icon_key_alt"></i> Log Out</a>
+                                <a href="{{route('logout')}}" document.getElementById('logout-form').submit();"><i class="icon_key_alt"></i> Log Out</a>
                             </li>
+                             <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                                                    @csrf
+                                                                </form>
                             <li>
                                 <a href="documentation.html"><i class="icon_key_alt"></i> Documentation</a>
                             </li>
