@@ -16,6 +16,8 @@ class CreateCalonTable extends Migration
         Schema::create('calon', function (Blueprint $table) {
             $table->id();
             $table->bigInteger('id_calon');
+            $table->bigInteger('nis_wakil');
+            $table->string('nama_wakil');
             $table->string('kategori');
             $table->text('visi');
             $table->text('misi');
