@@ -109,4 +109,16 @@ class admin extends Controller
 
         return redirect('data-kategori');
     }
+    function edit_kategori($id){
+        $data=Kategori::whereId($id)->first();
+        $f=Kategori::all();
+        $gararetek2=Akumulasi::find(auth()->user()->id);
+
+        return view('admin.edit_kategori',compact('data','f'),['gararetek2'=>$gararetek2]);
+    }
+    function update_kategori(request $request,$id){
+        $data=Kategori::whereId($id);
+        $data->update($request->except(['_token']));
+        return redirect('data-kategori');
+    }
 }

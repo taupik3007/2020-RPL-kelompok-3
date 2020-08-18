@@ -22,7 +22,7 @@
                                                       <tr>
                                                         <td>{{$kategori->nama_kategori}}</td>
                                                         <td>
-                                                        <a href="kategori/{{$kategori->id}}/update" class="btn btn-primary"><i class="icon_pencil-edit"></i></a>
+                                                        <a href="kategori/{{$kategori->id}}/edit" class="btn btn-primary"><i class="icon_pencil-edit"></i></a>
                                                         <a href="kategori/{{$kategori->id}}/hapus" class="btn btn-danger"><i class="icon_trash"></i></a>
 
                                                         </td>
