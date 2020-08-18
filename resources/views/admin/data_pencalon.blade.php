@@ -26,14 +26,14 @@
 
                                                    @foreach($users as $data)
                                                       <tr>
-                                                         <td>{{$data->nis}}</td>
-                                                         <td>{{$data->name}}</td>
-                                                         <td>{{$data->kelas}}</td>
-                                                         <td>{{$data->email}}</td>
-                                                         <td>{{$data->nis_wakil}}</td>
-                                                         <td>{{$data->kategori}}</td>
-                                                         <td>{{$data->visi}}</td>
-                                                         <td>{{$data->misi}}</td>
+                                                         <td>{{$data->calon->nis}}</td>
+                                                         <td>{{$data->calon->name}}</td>
+                                                         <td>{{$data->calon->kelas}}</td>
+                                                         <td>{{$data->calon->email}}</td>
+                                                         <td>{{$data->wakil->nis}}</td>
+                                                         <td>{{$data->calon->kategori}}</td>
+                                                         <td>{{$data->calon->visi}}</td>
+                                                         <td>{{$data->calon->misi}}</td>
 
 
 

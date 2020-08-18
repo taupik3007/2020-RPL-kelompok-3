@@ -24,6 +24,7 @@ class admin extends Controller
         $gararetek2=Akumulasi::find(auth()->user()->id);
         $data= User::all();
         return view('admin.data_siswa' ,compact('data','f'),['gararetek2'=>$gararetek2]);
+
     }
 
     function hapus_user($id){
@@ -32,8 +33,10 @@ class admin extends Controller
         return redirect('data-user');
     }
     function update_user($id){
+        $f=Kategori::all();
+        $gararetek2=Akumulasi::find(auth()->user()->id);
         $data=User::whereId($id)->first();
-        return view('admin.update_user',['data'=>$data]);
+        return view('admin.update_user',compact('f'),['data'=>$data,'data'=>$gararetek2]);
     }
 
     function aksi_update(request $request,$id){
@@ -43,7 +46,9 @@ class admin extends Controller
     }
 
     function tambah_kelas(){
-        return view('admin.tambah_kelas');
+        $f=Kategori::all();
+        $gararetek2=Akumulasi::find(auth()->user()->id);
+        return view('admin.tambah_kelas',compact('f'),['gararetek2'=>$gararetek2]);
 
     }
     function aksi_kelas(request $request){
@@ -52,7 +57,10 @@ class admin extends Controller
     }
 
     function tambah_kategori(){
-        return view('admin.tambah_kategori');
+        $f=Kategori::all();
+        $gararetek2=Akumulasi::find(auth()->user()->id);
+
+        return view('admin.tambah_kategori',compact('data','f'),['gararetek2'=>$gararetek2]);
     }
 
 
@@ -62,13 +70,18 @@ class admin extends Controller
     }
 
     function data_pencalon(){
-        $users = User::
-            join('calon', 'users.id', '=', 'calon.id_calon')
-            ->select('users.*', 'calon.*')
+        $f=Kategori::all();
+        $gararetek2=Akumulasi::find(auth()->user()->id);
+        $users = Calon::
+            join('users', 'users.id', '=', 'calon.id_calon')
+           ->join('wakil','wakil.id_wakil','=','users.id')
+
+            ->select('users.*', 'calon.*','wakil.*')
             ->where('calon.status','=','1')
             ->get();
+   dd($users);
 
-        return view('admin.data_pencalon',compact('users'));
+        return view('admin.data_pencalon',compact('users','f'),['gararetek2'=>$gararetek2]);
 
     }
     function terima_calon($id){
@@ -78,12 +91,16 @@ class admin extends Controller
 
     }
     function data_kelas(){
+        $f=Kategori::all();
+        $gararetek2=Akumulasi::find(auth()->user()->id);
         $kelas=Kelas::all();
-        return view('admin.data_kelas',compact('kelas'));
+        return view('admin.data_kelas',compact('kelas','f'),['gararetek2'=>$gararetek2]);
 
     }
     function data_kategori(){
+        $f=Kategori::all();
+        $gararetek2=Akumulasi::find(auth()->user()->id);
         $kategori=Kategori::all();
-        return view('admin.data_kategori',compact('kategori'));
+        return view('admin.data_kategori',compact('kategori','f'),['gararetek2'=>$gararetek2]);
     }
 }

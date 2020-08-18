@@ -15,6 +15,7 @@
                                                       <tr>
                                                          <th><i class="icon_profile"></i> Nis</th>
                                                          <th><i class="icon_profile"></i> Full Name</th>
+                                                         <th><i class="icon_profile"></i>Kelas</th>
                                                          <th><i class="icon_mail_alt"></i> Email</th>
                                                          <th><i class="icon_mobile"></i>status</th>
                                                          <th><i class="icon_cogs"></i> Action</th>
@@ -24,6 +25,7 @@
                                                       <tr>
                                                          <td>{{$data->nis}}</td>
                                                          <td>{{$data->name}}</td>
+                                                         <td>{{$data->kelas}}</td>
                                                          <td>{{$data->email}}</td>
                                                          <td>
                                                             @if($data->level ==1)

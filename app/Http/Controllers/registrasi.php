@@ -6,12 +6,16 @@ use Illuminate\Http\Request;
 
 use App\User;
 use App\Kelas;
+use App\Akumulasi;
+use App\Kategori;
 
 class registrasi extends Controller
 {
     function tampil(){
+        $f=Kategori::all();
+        $gararetek2=Akumulasi::find(auth()->user()->id);
         $j=Kelas::all();
-        return view('aplikasi.register',compact('j'));
+        return view('aplikasi.register',compact('j','f'),['gararetek2'=>$gararetek2]);
     }
     function create(request $request){
         $this->validate($request,[

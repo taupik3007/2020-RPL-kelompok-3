@@ -12,11 +12,17 @@ use App\Kelas;
 use App\Calon;
 
 use App\wakil;
+
+
+
+use App\Akumulasi;
 class fungsi extends Controller
 {
     function regis_calon(){
+        $f=Kategori::all();
+        $gararetek2=Akumulasi::find(auth()->user()->id);
         $j=Kategori::all();
-        return view('aplikasi.regis_calon',compact('j'));
+        return view('aplikasi.regis_calon',compact('j','f'),['gararetek2'=>$gararetek2]);
     }
 
     function aksi_calon(request $request){

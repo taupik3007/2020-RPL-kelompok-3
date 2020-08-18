@@ -3,6 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Kategori;
+
+use App\Akumulasi;
 
 class HomeController extends Controller
 {
@@ -23,6 +26,8 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('aplikasi.dashboard');
+        $f=Kategori::all();
+        $gararetek2=Akumulasi::find(auth()->user()->id);
+        return view('aplikasi.dashboard',compact('f'),['gararetek2'=>$gararetek2]);
     }
 }
