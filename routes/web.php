@@ -38,3 +38,4 @@ Route::get('/data-pencalon','admin@data_pencalon')->middleware('auth');//untuk m
 Route::get('/terima-calon/{id}','admin@terima_calon')->middleware('auth');//untuk menampilkan form terima calon
 Route::get('/data-kelas','admin@data_kelas')->middleware('auth');
 Route::get('/data-kategori','admin@data_kategori')->middleware('auth');
+Route::get('/kategori/{id}/hapus','admin@delete_kategori')->middleware('auth');

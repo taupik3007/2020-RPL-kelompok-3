@@ -60,7 +60,7 @@ class admin extends Controller
         $f=Kategori::all();
         $gararetek2=Akumulasi::find(auth()->user()->id);
 
-        return view('admin.tambah_kategori',compact('data','f'),['gararetek2'=>$gararetek2]);
+        return view('admin.tambah_kategori',compact('f'),['gararetek2'=>$gararetek2]);
     }
 
 
@@ -102,5 +102,11 @@ class admin extends Controller
         $gararetek2=Akumulasi::find(auth()->user()->id);
         $kategori=Kategori::all();
         return view('admin.data_kategori',compact('kategori','f'),['gararetek2'=>$gararetek2]);
+    }
+    function delete_kategori($id){
+        $data=Kategori::whereId($id);
+        $data->delete();
+
+        return redirect('data-kategori');
     }
 }
