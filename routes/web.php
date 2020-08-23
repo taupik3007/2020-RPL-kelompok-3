@@ -41,3 +41,6 @@ Route::get('/data-kategori','admin@data_kategori')->middleware('auth');
 Route::get('/kategori/{id}/hapus','admin@delete_kategori')->middleware('auth');
 Route::get('/kategori/{id}/edit','admin@edit_kategori')->middleware('auth');
 Route::post('/kategori/{id}/edit','admin@update_kategori')->middleware('auth');
+Route::get('/kelas/{id}/edit','admin@edit_kelas')->middleware('auth');
+Route::post('/kelas/{id}/edit','admin@update_kelas')->middleware('auth');
+Route::get('/kelas/{id}/delete','admin@delete_kelas')->middleware('auth');

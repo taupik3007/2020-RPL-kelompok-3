@@ -18,22 +18,27 @@
                                                          <th><i class="icon_profile"></i> kelas</th>
                                                          <th><i class="icon_mail_alt"></i>email</th>
                                                           <th><i class="icon_mobile"></i>nis wakil</th>
+                                                          <th><i class="icon_mobile"></i>nama wakil</th>
+                                                          <th><i class="icon_mobile"></i>kelas wakil</th>
                                                          <th><i class="icon_mobile"></i>kategori</th>
                                                          <th><i class="icon_cogs"></i> visi</th>
                                                          <th><i class="icon_cogs"></i> misi</th>
+                                                         <th><i class="icon_cogs"></i>aksi</th>
 
                                                       </tr>
 
                                                    @foreach($users as $data)
                                                       <tr>
-                                                         <td>{{$data->calon->nis}}</td>
-                                                         <td>{{$data->calon->name}}</td>
-                                                         <td>{{$data->calon->kelas}}</td>
-                                                         <td>{{$data->calon->email}}</td>
-                                                         <td>{{$data->wakil->nis}}</td>
-                                                         <td>{{$data->calon->kategori}}</td>
-                                                         <td>{{$data->calon->visi}}</td>
-                                                         <td>{{$data->calon->misi}}</td>
+                                                         <td>{{$data->nis}}</td>
+                                                         <td>{{$data->name}}</td>
+                                                         <td>{{$data->kelas}}</td>
+                                                         <td>{{$data->email}}</td>
+                                                         <td>{{$data->nis_wakil}}</td>
+                                                         <td>{{$data->nama_wakil}}</td>
+                                                         <td>{{$data->kelas_wakil}}</td>
+                                                         <td>{{$data->kategori}}</td>
+                                                         <td>{{$data->visi}}</td>
+                                                         <td>{{$data->misi}}</td>
 
 
 

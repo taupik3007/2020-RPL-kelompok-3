@@ -36,7 +36,7 @@ class admin extends Controller
         $f=Kategori::all();
         $gararetek2=Akumulasi::find(auth()->user()->id);
         $data=User::whereId($id)->first();
-        return view('admin.update_user',compact('f'),['data'=>$data,'data'=>$gararetek2]);
+        return view('admin.update_user',compact('f'),['data'=>$data,'gararetek2'=>$gararetek2]);
     }
 
     function aksi_update(request $request,$id){
@@ -74,12 +74,9 @@ class admin extends Controller
         $gararetek2=Akumulasi::find(auth()->user()->id);
         $users = Calon::
             join('users', 'users.id', '=', 'calon.id_calon')
-           ->join('wakil','wakil.id_wakil','=','users.id')
-
-            ->select('users.*', 'calon.*','wakil.*')
+            ->select('users.*', 'calon.*')
             ->where('calon.status','=','1')
             ->get();
-   dd($users);
 
         return view('admin.data_pencalon',compact('users','f'),['gararetek2'=>$gararetek2]);
 
@@ -121,4 +118,24 @@ class admin extends Controller
         $data->update($request->except(['_token']));
         return redirect('data-kategori');
     }
+    function edit_kelas($id){
+        $f=Kategori::all();
+        $gararetek2=Akumulasi::find(auth()->user()->id);
+        $data=Kelas::whereId($id)->first();
+        return view('admin.edit_kelas',compact('data','f'),['gararetek2'=>$gararetek2]);
+    }
+    function update_kelas(request $request,$id){
+        $f=Kategori::all();
+        $gararetek2=Akumulasi::find(auth()->user()->id);
+        $data=Kelas::whereId($id)->first();
+        $data->update($request->all());
+        return redirect('data-kelas');
+    }
+    function delete_kelas($id){
+        $data=Kelas::whereId($id)->first();
+        $data->delete();
+        return redirect('data-kelas');
+    }
+
+
 }

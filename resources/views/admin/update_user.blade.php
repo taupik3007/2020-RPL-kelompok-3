@@ -16,7 +16,7 @@
             <div class="card">
 
                 <br>
-                    <center>
+
                 <div class="card-body">
 
                     <form class="" method="POST" >
@@ -65,10 +65,20 @@
                         </div>
 
                         <div class="form-group row">
-                            <label for="password" class="col-md-2 col-form-label text-md-right">{{ __('Password') }}</label>
+                                                    <label for="kelas" class="col-md-2 col-form-label text-md-right">{{ __('Kelas') }}</label>
 
-                            <div class="col-md-6">
-                                <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="new-password">
+                                                    <div class="col-md-6">
+                                                        <input id="email" type="text" class="form-control @error('kelas') is-invalid @enderror" name="kelas" value="{{ $data->kelas }}" required autocomplete="email">
+
+                                                        @error('kelas')
+                                                            <span class="invalid-feedback" role="alert">
+                                                                <strong>{{ $message }}</strong>
+                                                            </span>
+                                                        @enderror
+                                                    </div>
+                                                </div>
+
+                        <div class="form-group row">
 
                                 @error('password')
                                     <span class="invalid-feedback" role="alert">
@@ -92,7 +102,7 @@
 
                     </form>
                 </div>
-            </center>
+
             </div>
         </div>
     </div>

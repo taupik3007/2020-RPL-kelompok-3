@@ -19,6 +19,7 @@ class CreateCalonTable extends Migration
             $table->bigInteger('nis_wakil');
             $table->string('nama_wakil');
             $table->string('kategori');
+            $table->string('kelas_wakil');
             $table->text('visi');
             $table->text('misi');
             $table->integer('status');

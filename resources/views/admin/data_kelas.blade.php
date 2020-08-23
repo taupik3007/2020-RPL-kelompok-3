@@ -24,7 +24,7 @@
                                                       @foreach($kelas as $kelas)
                                                       <tr>
                                                         <td>{{$kelas->nama_kelas}}</td>
-                                                        <td><a href="edit-kelas" class="btn btn-primary"><i class="icon_pencil-edit"></i></a></td>
+                                                        <td><a href="kelas/{{$kelas->id}}/edit" class="btn btn-primary"><i class="icon_pencil-edit"></i></a><a href="kelas/{{$kelas->id}}/delete" class="btn btn-danger"><i class="icon_trash"></i></a></td>
                                                       </tr>
 
 

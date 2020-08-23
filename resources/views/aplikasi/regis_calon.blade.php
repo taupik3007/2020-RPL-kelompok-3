@@ -22,6 +22,15 @@
                     <center>
                 <div class="card-body">
 
+                @if(session('gagal'))
+                <div class="alert alert-block alert-danger fade in">
+                                                  <button data-dismiss="alert" class="close close-sm" type="button">
+                                                      <i class="icon-remove"></i>
+                                                  </button>
+                                                 nis wakill yang anda inputkan tidak ada di dalam data
+                                              </div>
+                @endif
+
                     <form class="" method="POST" >
                         @csrf
 
@@ -61,19 +70,7 @@
                             </div>
                         </div>
 
-                        <div class="form-group row">
-                            <label for="password" class="col-md-2 col-form-label text-md-right">{{ __('Nama wakil') }}</label>
 
-                            <div class="col-md-6">
-                                <input id="password" type="text" class="form-control @error('password') is-invalid @enderror" name="nama_wkl" required autocomplete="new-password">
-
-                                @error('password')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
-                            </div>
-                        </div>
 
                          <div class="form-group row">
                                                     <label for="email" class="col-md-2 col-form-label text-md-right">{{ __('visi') }}</label>

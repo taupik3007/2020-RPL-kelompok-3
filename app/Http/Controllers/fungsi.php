@@ -32,24 +32,29 @@ class fungsi extends Controller
         $id_ketu=$request->input('id');
         $visi=$request->input('visi');
         $misi=$request->input('misi');
-        $kategori=$request->input('kategori');
-        $panggil=User::whereNis($nis_wkl)->first();
-        if($panggil) {
+        $wakil = User::whereNis($nis_wkl)->first();
 
+
+        $kategori=$request->input('kategori');
+
+        if($wakil) {
+            $jj=$wakil->name;
+            $kelas=$wakil->kelas;
 
             $calon = new Calon();
             $calon->id_calon = $id_ketu;
+            $calon->nis_wakil=$nis_wkl;
+            $calon->nama_wakil=$jj;
+            $calon->kelas_wakil=$kelas;
             $calon->visi = $visi;
             $calon->misi = $misi;
             $calon->kategori = $kategori;
             $calon->status = 1;
             $calon->save();
-            $wakil=new wakil();
-            $wakil->nis=$nis_wkl;
-            $wakil->save();
-            return redirect('home');
+            return redirect('regis-calon');
+
         }else{
-            echo "maaf";
+            return redirect('regis-calon')->with('gagal','nis wakill yang anda inputkan tidak ada di dalam data');
         }
 
 

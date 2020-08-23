@@ -7,7 +7,7 @@
                           <i class="icon_house_alt"></i>
                           <span>Dashboard</span>
                       </a>
-                      <a href="regis-calon">
+                      <a href="/regis-calon">
                           <i class="icon_pencil-edit"></i>
                           <span>Pendaftaran Calon</span>
                       </a>
@@ -39,10 +39,10 @@
                           <span class="menu-arrow arrow_carrot-right"></span>
                       </a>
                       <ul class="sub">
-                          <li><a class="" href="data-kategori">data kategori</a></li>
-                          <li><a class="" href="data-kelas">data kelas</a></li>
-                          <li><a class="" href="data-user">data user</a></li>
-                          <li><a class="" href="data-pencalon">data pencalonan</a></li>
+                          <li><a class="" href="/data-kategori">data kategori</a></li>
+                          <li><a class="" href="/data-kelas">data kelas</a></li>
+                          <li><a class="" href="/data-user">data user</a></li>
+                          <li><a class="" href="/data-pencalon">data pencalonan</a></li>
                       </ul>
                   </li>
                   @endif
