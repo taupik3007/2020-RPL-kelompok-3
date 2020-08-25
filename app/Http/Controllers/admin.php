@@ -136,6 +136,29 @@ class admin extends Controller
         $data->delete();
         return redirect('data-kelas');
     }
+    function delete_pencalon($id){
+        $data=Calon::whereId($id)->first();
+        $data->delete();
+        return redirect('data-pencalon');
+    }
+    function data_calon(){
+        $f=Kategori::all();
+        $gararetek2=Akumulasi::find(auth()->user()->id);
+        $data=Calon::
+        join('users', 'users.id', '=', 'calon.id_calon')
+            ->select('users.*', 'calon.*')
+            ->where('calon.status','=','2')
+            ->get();
+        return view('admin.data_calon',compact('data','f'),['gararetek2'=>$gararetek2]);
+    }
+    function delete_calon($id){
+        $data=Calon::whereId($id)->first();
+        $data->delete();
+        return redirect('data-pencalon');
+    }
 
 
 }
+
+
+

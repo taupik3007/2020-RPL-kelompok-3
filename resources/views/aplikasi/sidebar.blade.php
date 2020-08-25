@@ -25,7 +25,7 @@
                                             @if($gararetek2 && $gararetek2->id_kategori==$garaetek->id )
                                             @else
                                             {{--@if($gararetek2->id_kategori != $gararetek->id)--}}
-                                            <li><a class="" href="voting">{{$garaetek->nama_kategori}}</a></li>
+                                            <li><a class="" href="voting/{{$garaetek->id}}">{{$garaetek->nama_kategori}}</a></li>
                                             {{--@endif--}}
                                             @endif
                                             @endforeach
@@ -43,6 +43,8 @@
                           <li><a class="" href="/data-kelas">data kelas</a></li>
                           <li><a class="" href="/data-user">data user</a></li>
                           <li><a class="" href="/data-pencalon">data pencalonan</a></li>
+                          <li><a class="" href="/data-calon">data kandidat</a></li>
+
                       </ul>
                   </li>
                   @endif

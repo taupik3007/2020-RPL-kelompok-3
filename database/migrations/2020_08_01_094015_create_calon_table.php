@@ -15,8 +15,8 @@ class CreateCalonTable extends Migration
     {
         Schema::create('calon', function (Blueprint $table) {
             $table->id();
-            $table->bigInteger('id_calon');
-            $table->bigInteger('nis_wakil');
+            $table->unsignedBigInteger('id_calon');
+            $table->unsignedBigInteger('nis_wakil');
             $table->string('nama_wakil');
             $table->string('kategori');
             $table->string('kelas_wakil');
@@ -24,6 +24,8 @@ class CreateCalonTable extends Migration
             $table->text('misi');
             $table->integer('status');
             $table->timestamps();
+            $table->foreign('id_calon')->references('id')->on('users');
+            $table->foreign('nis_wakil')->references('nis')->on('users');
         });
     }
 

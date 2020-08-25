@@ -17,6 +17,9 @@ class CreateAkumulasiTable extends Migration
             $table->id();
             $table->bigInteger('id_user');
             $table->bigInteger('id_calon');
+            $table->foreign('id_user')->references('id')->on('users');
+            $table->foreign('id_calon')->references('id')->on('calon');
+
             $table->timestamps();
         });
     }

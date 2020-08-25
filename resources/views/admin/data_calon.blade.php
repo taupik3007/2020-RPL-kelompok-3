@@ -18,22 +18,39 @@
                                                          <th><i class="icon_profile"></i> kelas</th>
                                                          <th><i class="icon_mail_alt"></i>email</th>
                                                           <th><i class="icon_mobile"></i>nis wakil</th>
+                                                          <th><i class="icon_mobile"></i>nama wakil</th>
+                                                          <th><i class="icon_mobile"></i>kelas wakil</th>
                                                          <th><i class="icon_mobile"></i>kategori</th>
                                                          <th><i class="icon_cogs"></i> visi</th>
                                                          <th><i class="icon_cogs"></i> misi</th>
+                                                         <th><i class="icon_cogs"></i>aksi</th>
 
                                                       </tr>
 
-
+                                                   @foreach($data as $data)
                                                       <tr>
+                                                         <td>{{$data->nis}}</td>
+                                                         <td>{{$data->name}}</td>
+                                                         <td>{{$data->kelas}}</td>
+                                                         <td>{{$data->email}}</td>
+                                                         <td>{{$data->nis_wakil}}</td>
+                                                         <td>{{$data->nama_wakil}}</td>
+                                                         <td>{{$data->kelas_wakil}}</td>
+                                                         <td>{{$data->kategori}}</td>
+                                                         <td>{{$data->visi}}</td>
+                                                         <td>{{$data->misi}}</td>
 
 
 
 
+                                                         <td>
+                                                          <div class="btn-group">
 
-
+                                                              <a class="btn btn-danger" href="calon/{{$data->id}}/hapus"><i class="icon_trash"></i></a>
+                                                          </div>
+                                                          </td>
                                                       </tr>
-
+                                                    @endforeach
 
                                                    </tbody>
                                                 </table>

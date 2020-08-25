@@ -44,3 +44,9 @@ Route::post('/kategori/{id}/edit','admin@update_kategori')->middleware('auth');
 Route::get('/kelas/{id}/edit','admin@edit_kelas')->middleware('auth');
 Route::post('/kelas/{id}/edit','admin@update_kelas')->middleware('auth');
 Route::get('/kelas/{id}/delete','admin@delete_kelas')->middleware('auth');
+Route::get('/pencalon/{id}/hapus','admin@delete_pencalon')->middleware('auth');
+Route::get('/data-calon','admin@data_calon')->middleware('auth');
+Route::get('/calon/{id}/hapus','admin@delete_calon')->middleware('auth');
+Route::get('/voting/{id}','fungsi@voting')->middleware('auth');
+
+

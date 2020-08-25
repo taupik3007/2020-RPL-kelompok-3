@@ -64,6 +64,16 @@ class fungsi extends Controller
 
 
        }
+    function voting($id){
+        $f=Kategori::all();
+        $gararetek2=Akumulasi::find(auth()->user()->id);
+        $data=Calon::
+        join('users', 'users.id', '=', 'calon.id_calon')
+            ->select('users.*', 'calon.*')
+            ->where('calon.status','=','2','AND','calon.kategori','=',$id)
+            ->get();
+        return view('aplikasi.voting',compact('data','f'),['gararetek2'=>$gararetek2]);
+    }
 
 
 
