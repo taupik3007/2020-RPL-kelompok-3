@@ -18,12 +18,13 @@ class CreateUsersTable extends Migration
             $table->bigInteger('nis')->unique();
             $table->string('name');
             $table->string('email')->unique();
-            $table->string('kelas');
+            $table->unsignedBigInteger('id_kelas');
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
             $table->integer('level');
             $table->rememberToken();
             $table->timestamps();
+            $table->foreign('id_kelas')->references('id')->on('kelas');
         });
     }
 

@@ -34,7 +34,7 @@ class registrasi extends Controller
         $data->nis = $nis;
         $data->name = $woy;
         $data->email = $email;
-        $data->kelas=$request->input('kelas');
+        $data->id_kelas=$request->input('kelas');
 
         $data->password = BCRYPT($pass);
         $data->level=$level;

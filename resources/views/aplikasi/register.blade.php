@@ -107,7 +107,7 @@
                                                                              <div class="col-md-6">
                                                                                  <select id="level"  class="form-control @error('kelas') is-invalid @enderror" name="kelas" required autocomplete="level">
                                                                                  @foreach($j as $j)
-                                                                                 <option >{{$j->nama_kelas}}</option>
+                                                                                 <option value="{{$j->id}}" >{{$j->nama_kelas}}</option>
                                                                                  @endforeach
                                                                                  </select>
                                                                                  @error('kelas')

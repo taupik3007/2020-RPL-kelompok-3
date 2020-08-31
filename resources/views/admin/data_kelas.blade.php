@@ -10,6 +10,14 @@
 
                           </header>
                     <div class="panel-body">
+                     @if(session('gagal'))
+                                    <div class="alert alert-block alert-danger fade in">
+                                                                      <button data-dismiss="alert" class="close close-sm" type="button">
+                                                                          <i class="icon-remove"></i>
+                                                                      </button>
+                                                                     masih ada user yang ada di kelas tersebut
+                                                                  </div>
+                                    @endif
                     <div class=" pull-right "><a class="btn btn-primary btn-lg" href="tambah-kelas  " title="TAMBAH   KELAS">Tambah Kelas</a></div><br/><br/><br/>
                     <header>
 

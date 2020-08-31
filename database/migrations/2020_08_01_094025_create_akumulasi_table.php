@@ -15,8 +15,8 @@ class CreateAkumulasiTable extends Migration
     {
         Schema::create('akumulasi', function (Blueprint $table) {
             $table->id();
-            $table->bigInteger('id_user');
-            $table->bigInteger('id_calon');
+            $table->unsignedBigInteger('id_user');
+            $table->unsignedBigInteger('id_calon');
             $table->foreign('id_user')->references('id')->on('users');
             $table->foreign('id_calon')->references('id')->on('calon');
 

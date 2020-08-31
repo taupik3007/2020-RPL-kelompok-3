@@ -25,7 +25,7 @@
                                                       <tr>
                                                          <td>{{$data->nis}}</td>
                                                          <td>{{$data->name}}</td>
-                                                         <td>{{$data->kelas}}</td>
+                                                         <td>{{$data->nama_kelas}}</td>
                                                          <td>{{$data->email}}</td>
                                                          <td>
                                                             @if($data->level ==1)

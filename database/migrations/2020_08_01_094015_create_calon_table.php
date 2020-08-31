@@ -16,16 +16,18 @@ class CreateCalonTable extends Migration
         Schema::create('calon', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('id_calon');
-            $table->unsignedBigInteger('nis_wakil');
-            $table->string('nama_wakil');
-            $table->string('kategori');
-            $table->string('kelas_wakil');
+
+            $table->unsignedBigInteger('id_kategori');
+            $table->unsignedBigInteger('id_wakil');
+            $table->foreign('id_wakil')->references('id')->on('users');
+
             $table->text('visi');
             $table->text('misi');
             $table->integer('status');
             $table->timestamps();
+
             $table->foreign('id_calon')->references('id')->on('users');
-            $table->foreign('nis_wakil')->references('nis')->on('users');
+            $table->foreign('id_kategori')->references('id')->on('kategori');
         });
     }
 

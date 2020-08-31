@@ -31,12 +31,17 @@
                                                       <tr>
                                                          <td>{{$data->nis}}</td>
                                                          <td>{{$data->name}}</td>
-                                                         <td>{{$data->kelas}}</td>
+                                                         <td>{{$data->nama_kelas}}</td>
                                                          <td>{{$data->email}}</td>
-                                                         <td>{{$data->nis_wakil}}</td>
-                                                         <td>{{$data->nama_wakil}}</td>
-                                                         <td>{{$data->kelas_wakil}}</td>
-                                                         <td>{{$data->kategori}}</td>
+                                                        @foreach($wakil as $wakil)
+
+                                                          @if($data->id==$wakil->id)
+                                                           <td>{{$wakil->nis}}</td>
+                                                           <td>{{$wakil->name}}</td>
+                                                           <td>{{$wakil->nama_kelas}}</td>
+                                                           @endif
+                                                           @endforeach
+                                                         <td>{{$data->nama_kategori}}</td>
                                                          <td>{{$data->visi}}</td>
                                                          <td>{{$data->misi}}</td>
 

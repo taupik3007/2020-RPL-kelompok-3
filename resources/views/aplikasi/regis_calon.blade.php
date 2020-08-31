@@ -27,7 +27,7 @@
                                                   <button data-dismiss="alert" class="close close-sm" type="button">
                                                       <i class="icon-remove"></i>
                                                   </button>
-                                                 nis wakill yang anda inputkan tidak ada di dalam data
+                                                 masih ada user yang ada di kelas tersebut
                                               </div>
                 @endif
 
