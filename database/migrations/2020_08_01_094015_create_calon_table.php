@@ -25,7 +25,6 @@ class CreateCalonTable extends Migration
             $table->integer('status');
             $table->timestamps();
             $table->foreign('id_calon')->references('id')->on('users');
-            $table->foreign('nis_wakil')->references('nis')->on('users');
         });
     }
 

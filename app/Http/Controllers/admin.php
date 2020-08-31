@@ -14,6 +14,8 @@ use App\Kategori;
 
 use App\Akumulasi;
 
+use Auth;
+
 class admin extends Controller
 {
     public function __construct(){
@@ -155,6 +157,17 @@ class admin extends Controller
         $data=Calon::whereId($id)->first();
         $data->delete();
         return redirect('data-pencalon');
+    }
+    function show(){
+        $f=Kategori::all();
+        $gararetek2=Akumulasi::find(auth()->user()->id);
+        $data=User::whereId(auth()->user()->id)->first();
+        return view('admin.show',compact('f'),['data'=>$data,'gararetek2'=>$gararetek2]);
+    }
+    function aksi_show(request $request){
+        $data=User::whereId(auth()->user()->id);
+        $data->update($request->except(['_token']));
+        return redirect()->back(); 
     }
 
 
