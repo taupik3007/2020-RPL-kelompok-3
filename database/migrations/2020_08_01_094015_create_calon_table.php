@@ -19,7 +19,7 @@ class CreateCalonTable extends Migration
 
             $table->unsignedBigInteger('id_kategori');
             $table->unsignedBigInteger('id_wakil');
-            $table->foreign('id_wakil')->references('id')->on('users');
+
 
             $table->text('visi');
             $table->text('misi');
@@ -28,6 +28,7 @@ class CreateCalonTable extends Migration
 
             $table->foreign('id_calon')->references('id')->on('users');
             $table->foreign('id_kategori')->references('id')->on('kategori');
+
         });
     }
 

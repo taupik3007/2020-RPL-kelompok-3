@@ -15,7 +15,7 @@
                                                                                           <button data-dismiss="alert" class="close close-sm" type="button">
                                                                                               <i class="icon-remove"></i>
                                                                                           </button>
-                                                                                         masih ada user yang ada di kategori tersebut
+                                                                                         masih ada user yang ada di kategorix tersebut
                                                                                       </div>
                                                         @endif
                     <div class=" pull-right "><a class="btn btn-primary btn-lg" href="tambah-kategori" title="">Tambah Kategori</a></div><br/><br/><br/>

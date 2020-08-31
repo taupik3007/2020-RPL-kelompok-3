@@ -4,7 +4,7 @@
             </div>
 
             <!--logo start-->
-            <a href="index.html" class="logo">Karm<span>anta</span> <span class="lite">Lite</span></a>
+            <a href="index.html" class="logo">VOTING SMK MAHAPUTRA</a>
             <!--logo end-->
 
             <div class="nav search-row" id="top_menu">
@@ -24,11 +24,7 @@
                 <ul class="nav pull-right top-menu">
                     
                     <!-- task notificatoin start -->
-                    <li id="task_notificatoin_bar" class="dropdown">
-                        <a data-toggle="dropdown" class="dropdown-toggle" href="#">
-                            <span class="icon-task-l"></i>
-                            <span class="badge bg-important">5</span>
-                        </a>
+                   
                         <ul class="dropdown-menu extended tasks-bar">
                             <div class="notify-arrow notify-arrow-blue"></div>
                             <li>
@@ -110,10 +106,7 @@
                     <!-- task notificatoin end -->
                     <!-- inbox notificatoin start-->
                     <li id="mail_notificatoin_bar" class="dropdown">
-                        <a data-toggle="dropdown" class="dropdown-toggle" href="#">
-                            <i class="icon-envelope-l"></i>
-                            <span class="badge bg-important">5</span>
-                        </a>
+                        
                         <ul class="dropdown-menu extended inbox">
                             <div class="notify-arrow notify-arrow-blue"></div>
                             <li>
@@ -231,17 +224,9 @@
                         <ul class="dropdown-menu extended logout">
                             <div class="log-arrow-up"></div>
                             <li class="eborder-top">
-                                <a href="#"><i class="icon_profile"></i> My Profile</a>
+                                <a href="/admin/profile"><i class="icon_profile"></i> My Profile</a>
                             </li>
-                            <li>
-                                <a href="#"><i class="icon_mail_alt"></i> My Inbox</a>
-                            </li>
-                            <li>
-                                <a href="#"><i class="icon_clock_alt"></i> Timeline</a>
-                            </li>
-                            <li>
-                                <a href="#"><i class="icon_chat_alt"></i> Chats</a>
-                            </li>
+                           
                             <li>
                                  <a class="dropdown-item" href="{{ route('logout') }}"
                                                                        <a class="dropdown-item" href="{{ route('logout') }}"
