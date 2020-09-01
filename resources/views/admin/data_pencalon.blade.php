@@ -33,12 +33,12 @@
                                                          <td>{{$data->name}}</td>
                                                          <td>{{$data->nama_kelas}}</td>
                                                          <td>{{$data->email}}</td>
-                                                        @foreach($wakil as $wakil)
+                                                        @foreach($wakil as $wak)
 
-                                                          @if($data->id==$wakil->id)
-                                                           <td>{{$wakil->nis}}</td>
-                                                           <td>{{$wakil->name}}</td>
-                                                           <td>{{$wakil->nama_kelas}}</td>
+                                                          @if($data->id==$wak->id)
+                                                           <td>{{$wak->nis}}</td>
+                                                           <td>{{$wak->name}}</td>
+                                                           <td>{{$wak->nama_kelas}}</td>
                                                            @endif
                                                            @endforeach
                                                          <td>{{$data->nama_kategori}}</td>

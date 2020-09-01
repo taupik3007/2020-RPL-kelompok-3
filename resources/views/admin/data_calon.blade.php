@@ -27,21 +27,22 @@
 
                                                       </tr>
 
-                                                   @foreach($data as $data)
+                                                   @foreach($users as $data)
 
                                                       <tr>
                                                          <td>{{$data->nis}}</td>
                                                          <td>{{$data->name}}</td>
                                                          <td>{{$data->nama_kelas}}</td>
                                                          <td>{{$data->email}}</td>
-                                                        @foreach($wakil as $wakil)
+                                                        @foreach($wakil as $wak)
 
-                                                        @if($data->id==$wakil->id)
-                                                         <td>{{$wakil->nis}}</td>
-                                                         <td>{{$wakil->name}}</td>
-                                                         <td>{{$wakil->nama_kelas}}</td>
-                                                         @endif
-                                                        @endforeach
+                                                          @if($data->id==
+                                                          $wak->id)
+                                                           <td>{{$wak->nis}}</td>
+                                                           <td>{{$wak->name}}</td>
+                                                           <td>{{$wak->nama_kelas}}</td>
+                                                           @endif
+                                                           @endforeach
                                                          <td>{{$data->nama_kategori}}</td>
                                                          <td>{{$data->visi}}</td>
                                                          <td>{{$data->misi}}</td>
@@ -51,8 +52,8 @@
 
                                                          <td>
                                                           <div class="btn-group">
-
-                                                              <a class="btn btn-danger" href="calon/{{$data->id}}/hapus"><i class="icon_trash"></i></a>
+                                                              <a class="btn btn-primary" href="terima-calon/{{$data->id}}"><i class="icon_plus_alt "></i></a>
+                                                              <a class="btn btn-danger" href="pencalon/{{$data->id}}/hapus"><i class="icon_trash"></i></a>
                                                           </div>
                                                           </td>
                                                       </tr>

@@ -90,7 +90,7 @@ class admin extends Controller
             ->get();
         //dd($wakil);
 
-        return view('admin.data_pencalon',compact('','f','wakil'),['gararetek2'=>$gararetek2]);
+        return view('admin.data_pencalon',compact('users','f','wakil'),['gararetek2'=>$gararetek2]);
 
     }
     function terima_calon($id){
@@ -166,7 +166,7 @@ class admin extends Controller
     function data_calon(){
         $f=Kategori::all();
         $gararetek2=Akumulasi::find(auth()->user()->id);
-        $data=Calon::
+        $users=Calon::
         join('users', 'users.id', '=', 'calon.id_calon')
             ->join('kelas','kelas.id','=','users.id_kelas')
             ->join('kategori','kategori.id','=','calon.id_kategori')
@@ -178,14 +178,15 @@ class admin extends Controller
         join('users','users.id','=','calon.id_wakil')
             ->join('kelas','kelas.id','=','users.id_kelas')
 
-            ->select('users.name','users.nis','kelas.*', 'calon.*')
-            ->get();
-        //dd($wakil);
+            ->select('users.name','users.nis','kelas.*','calon.*')
 
-        return view('admin.data_calon',compact('data','f','wakil'),['gararetek2'=>$gararetek2]);
+            ->get();
+//         dd($wakil);
+
+        return view('admin.data_calon',compact('users','f','wakil'),['gararetek2'=>$gararetek2]);
     }
     function delete_calon($id){
-        $data=Calon::whereId($id)->first();
+        $data = Calon::whereId($id)->first();
         $data->delete();
         return redirect('data-pencalon');
     }

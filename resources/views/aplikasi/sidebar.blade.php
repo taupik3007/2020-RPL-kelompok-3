@@ -3,7 +3,7 @@
               <!-- sidebar menu start-->
               <ul class="sidebar-menu">
                   <li class="active">
-                      <a class="" href="home">
+                      <a class="" href="/home">
                           <i class="icon_house_alt"></i>
                           <span>Dashboard</span>
                       </a>
@@ -25,7 +25,7 @@
                                             @if($gararetek2 && $gararetek2->id_kategori==$garaetek->id )
                                             @else
                                             {{--@if($gararetek2->id_kategori != $gararetek->id)--}}
-                                            <li><a class="" href="voting/{{$garaetek->id}}">{{$garaetek->nama_kategori}}</a></li>
+                                            <li><a class="" href="/voting/{{$garaetek->id}}">{{$garaetek->nama_kategori}}</a></li>
                                             {{--@endif--}}
                                             @endif
                                             @endforeach

@@ -16,6 +16,8 @@ use App\wakil;
 
 
 use App\Akumulasi;
+use Illuminate\Support\Facades\Auth;
+
 class fungsi extends Controller
 {
     function regis_calon(){
@@ -35,20 +37,19 @@ class fungsi extends Controller
         $wakil = User::whereNis($nis_wkl)->first();
 
 
+
+
         $kategori=$request->input('kategori');
 
         if($wakil) {
-            $jj=$wakil->name;
-            $kelas=$wakil->kelas;
+            $id_wkl=$wakil->id;
 
             $calon = new Calon();
             $calon->id_calon = $id_ketu;
-            $calon->nis_wakil=$nis_wkl;
-            $calon->nama_wakil=$jj;
-            $calon->kelas_wakil=$kelas;
+            $calon->id_wakil=$id_wkl;
             $calon->visi = $visi;
             $calon->misi = $misi;
-            $calon->kategori = $kategori;
+            $calon->id_kategori = $kategori;
             $calon->status = 1;
             $calon->save();
             return redirect('regis-calon');
@@ -69,10 +70,31 @@ class fungsi extends Controller
         $gararetek2=Akumulasi::find(auth()->user()->id);
         $data=Calon::
         join('users', 'users.id', '=', 'calon.id_calon')
-            ->select('users.*', 'calon.*')
-            ->where('calon.status','=','2','AND','calon.kategori','=',$id)
+            ->join('kelas','kelas.id','=','users.id_kelas')
+            ->join('kategori','kategori.id','=','calon.id_kategori')
+            ->select('kategori.*','users.*','kelas.*','calon.*')
+            ->where('calon.id_kategori','=',$id,'and','calon.status','=','2')
             ->get();
-        return view('aplikasi.voting',compact('data','f'),['gararetek2'=>$gararetek2]);
+//        dd($data);
+        $wakil=Calon::
+        join('users','users.id','=','calon.id_wakil')
+            ->join('kelas','kelas.id','=','users.id_kelas')
+            ->join('kategori','kategori.id','=','calon.id_kategori')
+
+            ->select('users.name','users.nis','kelas.*', 'calon.*')
+            ->where('calon.status','=','2','and','calon.id','=','$id')
+            ->get();
+        return view('aplikasi.voting',compact('data','f','wakil'),['gararetek2'=>$gararetek2]);
+    }
+    function pilih(request $request){
+//        dd($request);
+        $id_calon=$request->id;
+        $akumulasi=new Akumulasi();
+        $akumulasi->id_user=Auth()->user()->id;
+        $akumulasi->id_calon=$id_calon;
+        $akumulasi->id_kategori=$request->kategori;
+        $akumulasi->save();
+        return redirect('/home');
     }
 
 

@@ -48,5 +48,6 @@ Route::get('/pencalon/{id}/hapus','admin@delete_pencalon')->middleware('auth');
 Route::get('/data-calon','admin@data_calon')->middleware('auth');
 Route::get('/calon/{id}/hapus','admin@delete_calon')->middleware('auth');
 Route::get('/voting/{id}','fungsi@voting')->middleware('auth');
+Route::post('/voting/{id}','fungsi@pilih')->middleware('auth');
 Route::get('/admin/profile','admin@show')->middleware('auth');
 Route::post('/admin/profile','admin@aksi_show')->middleware('auth');

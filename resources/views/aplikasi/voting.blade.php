@@ -17,7 +17,18 @@
                                               </header>
 
 
-                    </section>
+
+                        <div class="col-md-12">
+                    <center>   <img src="{{asset('img/avatar1.jpg')}}" height="200" alt=""></center><br/>
+                       <form action="" method="post">
+                       @csrf
+                       <input type="hidden" name="id" value="{{$data->id}}">
+                       <input type="hidden" name="kategori" value="{{$data->id_kategori}}">
+                       <input type="submit" class="btn btn-compose" value="pilih">
+                       </form>
+                       <br/>
+                        </div>
+                     </section>
                     </div>
 
                     @endforeach
