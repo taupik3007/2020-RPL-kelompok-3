@@ -39,6 +39,19 @@
                                 @enderror
                             </div>
                         </div>
+                          <div class="form-group row">
+                                                    <label for="nis" class="col-md-2 col-form-label text-md-right">{{ __('Angkatan') }}</label>
+
+                                                    <div class="col-md-6">
+                                                        <input id="nis" type="text" class="form-control @error('kelas') is-invalid @enderror" name="angkatan" placeholder="masukan tahun angkatan" required autocomplete="kelas" autofocus>
+
+                                                        @error('kelas')
+                                                            <span class="invalid-feedback" role="alert">
+                                                                <strong>{{ $message }}</strong>
+                                                            </span>
+                                                        @enderror
+                                                    </div>
+                                                </div>
 
 
 

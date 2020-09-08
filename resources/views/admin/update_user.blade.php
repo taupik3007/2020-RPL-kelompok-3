@@ -68,8 +68,12 @@
                                                     <label for="kelas" class="col-md-2 col-form-label text-md-right">{{ __('Kelas') }}</label>
 
                                                     <div class="col-md-6">
-                                                        <input id="email" type="text" class="form-control @error('kelas') is-invalid @enderror" name="kelas" value="{{ $data->kelas }}" required autocomplete="email">
+                                                       <select class="form-control" name="id_kelas"  id="">
+                                                       @foreach($kelas as $Kelas)
+                                                       <option value="{{$Kelas->id}}">{{$Kelas->angkatan}}-{{$Kelas->nama_kelas}}</option>
+                                                       @endforeach
 
+                                                       </select>
                                                         @error('kelas')
                                                             <span class="invalid-feedback" role="alert">
                                                                 <strong>{{ $message }}</strong>
@@ -86,7 +90,8 @@
                                     </span>
                                 @enderror
                             </div>
-                        </div>
+
+
 
 
 

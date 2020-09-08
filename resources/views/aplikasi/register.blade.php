@@ -91,8 +91,8 @@
 
                                                     <div class="col-md-6">
                                                         <select id="level"  class="form-control @error('password') is-invalid @enderror" name="level" required autocomplete="level">
-                                                        <option >2</option>
-                                                        <option>1</option>
+                                                        <option value="2" >Siswa</option>
+                                                        <option value="1">Admin</option>
                                                         </select>
                                                         @error('level')
                                                             <span class="invalid-feedback" role="alert">
@@ -107,7 +107,7 @@
                                                                              <div class="col-md-6">
                                                                                  <select id="level"  class="form-control @error('kelas') is-invalid @enderror" name="kelas" required autocomplete="level">
                                                                                  @foreach($j as $j)
-                                                                                 <option value="{{$j->id}}" >{{$j->nama_kelas}}</option>
+                                                                                 <option value="{{$j->id}}" >{{$j->angkatan}}-{{$j->nama_kelas}}</option>
                                                                                  @endforeach
                                                                                  </select>
                                                                                  @error('kelas')

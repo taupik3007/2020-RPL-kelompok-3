@@ -52,6 +52,7 @@
 
                                                          <td>
                                                           <div class="btn-group">
+                                                           <a class="btn btn-success" href="/voting/{{$data->id}}/info"><i class="icon_profile "></i></a>
                                                               <a class="btn btn-primary" href="terima-calon/{{$data->id}}"><i class="icon_plus_alt "></i></a>
                                                               <a class="btn btn-danger" href="pencalon/{{$data->id}}/hapus"><i class="icon_trash"></i></a>
                                                           </div>

@@ -21,7 +21,7 @@ class CreateAkumulasiTable extends Migration
             $table->foreign('id_user')->references('id')->on('users');
             $table->foreign('id_calon')->references('id')->on('calon');
             $table->foreign('id_kategori')->references('id')->on('kategori');
-
+            $table->timestamp('deleted_at')->nullable();
             $table->timestamps();
         });
     }

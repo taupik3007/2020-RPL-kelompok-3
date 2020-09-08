@@ -12,6 +12,8 @@ class KelasSeeder extends Seeder
     public function run()
     {
         DB::table('kelas')->insert([
+          
+            'angkatan'=>'2018-2019',
             'nama_kelas'=>'XIIRPL1'
         ]);
     }

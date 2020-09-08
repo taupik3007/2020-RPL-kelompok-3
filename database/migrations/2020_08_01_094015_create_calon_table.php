@@ -24,6 +24,7 @@ class CreateCalonTable extends Migration
             $table->text('visi');
             $table->text('misi');
             $table->integer('status');
+            $table->timestamp('deleted_at')->nullable();
             $table->timestamps();
 
             $table->foreign('id_calon')->references('id')->on('users');

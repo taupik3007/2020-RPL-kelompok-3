@@ -18,6 +18,11 @@ class HomeController extends Controller
     {
         $this->middleware('auth');
     }
+    private function kategori(){
+        $this->data_kategori=Kategori::all();
+        $this->user=Akumulasi::whereId_user(auth()->user()->id)->get();
+        $this->hitung_user=Akumulasi::where('id_user','=',auth()->user()->id)->count();
+    }
 
     /**
      * Show the application dashboard.
@@ -26,8 +31,10 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $f=Kategori::all();
-        $gararetek2=Akumulasi::find(auth()->user()->id);
-        return view('aplikasi.dashboard',compact('f'),['gararetek2'=>$gararetek2]);
+        $kategori      = $this->kategori();
+        $data_kategori = $this->data_kategori;
+        $hitung        = $this->hitung_user;
+        $user          = $this->user;
+        return view('aplikasi.dashboard',compact(['data_kategori','user','hitung']));
     }
 }

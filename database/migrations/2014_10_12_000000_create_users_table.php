@@ -23,6 +23,7 @@ class CreateUsersTable extends Migration
             $table->string('password');
             $table->integer('level');
             $table->rememberToken();
+            $table->timestamp('deleted_at')->nullable();
             $table->timestamps();
             $table->foreign('id_kelas')->references('id')->on('kelas');
         });

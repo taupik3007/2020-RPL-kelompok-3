@@ -12,10 +12,11 @@ use App\Kategori;
 class registrasi extends Controller
 {
     function tampil(){
-        $f=Kategori::all();
-        $gararetek2=Akumulasi::find(auth()->user()->id);
+        $data_kategori=Kategori::all();
+        $user=Akumulasi::whereId_user(auth()->user()->id)->get();
+        $hitung_user=Akumulasi::whereId_user(auth()->user()->id)->count();
         $j=Kelas::all();
-        return view('aplikasi.register',compact('j','f'),['gararetek2'=>$gararetek2]);
+        return view('aplikasi.register',compact('j','data_kategori','user'),['hitung'=>$hitung_user]);
     }
     function create(request $request){
         $this->validate($request,[

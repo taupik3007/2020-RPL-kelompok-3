@@ -25,12 +25,14 @@
                        <table class="table table-striped table-advance table-hover">
                                                    <tbody>
                                                       <tr>
+                                                        <th>  <i class="icon_profile"></i> Angkatan</th>
                                                          <th><i class="icon_profile"></i> Kelas</th>
                                                          <th>aksi</th>
 
                                                       </tr>
                                                       @foreach($kelas as $kelas)
                                                       <tr>
+                                                        <td> {{$kelas->angkatan}}</td>
                                                         <td>{{$kelas->nama_kelas}}</td>
                                                         <td><a href="kelas/{{$kelas->id}}/edit" class="btn btn-primary"><i class="icon_pencil-edit"></i></a><a href="kelas/{{$kelas->id}}/delete" class="btn btn-danger"><i class="icon_trash"></i></a></td>
                                                       </tr>
