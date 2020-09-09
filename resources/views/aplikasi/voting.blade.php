@@ -67,10 +67,9 @@
                     @php
                     $hitung_semua=App\Akumulasi::count();
                     $hitung_akumulasi=App\Akumulasi::whereId_calon($calon->id)->whereId_kategori($view)->count();
-
+                    if($hitung_semua==0){$total=0;}else{
                    $total=($hitung_akumulasi/$hitung_semua)*100;
-
-
+                   }
                     @endphp
                                                                  <li>
                                                                                                                <a href="javascript:;">

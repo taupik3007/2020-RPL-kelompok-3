@@ -11,6 +11,22 @@ class KategoriSeeder extends Seeder
      */
     public function run()
     {
-        //
+        DB::table('kategori')->insert([
+
+
+            'nama_kategori'=>'OSIS'
+        ]);
+
+        DB::table('kategori')->insert([
+
+
+            'nama_kategori'=>'PRAMUKA'
+        ]);
+
+        DB::table('kategori')->insert([
+
+
+            'nama_kategori'=>'PADUAN SUARA'
+        ]);
     }
 }

@@ -1,6 +1,6 @@
 @extends('aplikasi.layout')
 @section('admin')
-<li class="sub-menu active" >
+<li class="sub-menu " >
 <a href="javascript:;" class="">
                           <i class="icon_desktop"></i>
                           <span>FITUR Admin</span>
