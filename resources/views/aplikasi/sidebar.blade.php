@@ -2,18 +2,22 @@
           <div id="sidebar"  class="nav-collapse ">
               <!-- sidebar menu start-->
               <ul class="sidebar-menu">
-                  <li class="active">
+                  <li class="{{Request::path() === 'home'   ? 'active' : ''}}">
                       <a class="" href="/home">
                           <i class="icon_house_alt"></i>
                           <span>Dashboard</span>
                       </a>
+                   </li>
+                   <li class="{{Request::path() === 'regis-calon'   ? 'active' : ''}}">
+                      @if(auth()->user()->level==2)
                       <a href="/regis-calon">
                           <i class="icon_pencil-edit"></i>
                           <span>Pendaftaran Calon</span>
                       </a>
+                      @endif
                   </li>
 
-
+                            @if(auth()->user()->level==2)
                                    <li class="sub-menu">
                                         <a href="javascript:;" class="">
                                             <i class="icon_desktop"></i>
@@ -41,8 +45,10 @@
                                         </ul>
 
                                     </li>
+                                    @endif
 
                                     <li class="sub-menu">
+
                                                                             <a href="javascript:;" class="">
                                                                                 <i class="icon_desktop"></i>
                                                                                 <span>Akumulasi voting</span>
@@ -58,22 +64,8 @@
 
 
                   @if(auth()->user()->level==1)
-                  <li class="sub-menu">
-                      <a href="javascript:;" class="">
-                          <i class="icon_desktop"></i>
-                          <span>FITUR Admin</span>
-                          <span class="menu-arrow arrow_carrot-right"></span>
-                      </a>
-                      <ul class="sub">
-                          <li><a class="" href="/data-kategori">data kategori</a></li>
-                          @yield('sidebar')
-                          <li><a class="" href="/data-kelas">data kelas</a></li>
-                          <li><a class="" href="/data-user">data user</a></li>
-                          <li><a class="" href="/data-pencalon">data pencalonan</a></li>
-                          <li><a class="" href="/data-calon">data kandidat</a></li>
+                 	@yield('admin')
 
-                      </ul>
-                  </li>
                   @endif
 
                   

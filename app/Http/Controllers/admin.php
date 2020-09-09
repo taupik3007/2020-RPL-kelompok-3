@@ -43,7 +43,7 @@ class admin extends Controller
         $wakil=Calon::whereId_wakil($id)->first();
         $akumulasi_user=Akumulasi::whereId_user($id)->first();
         if($calon){
-            return redirect('/data_user')->with('gagal_calon','gagal');
+            return redirect('/data-user')->with('gagal_calon','gagal');
         }elseif($wakil){
             return redirect('/data-user')->with('gagal_wakil','gagal');
 
@@ -68,12 +68,55 @@ class admin extends Controller
         return view('admin.update_user',compact(['data_kategori','data','user','kelas','hitung']));
     }
 
-    function aksi_update(request $request,$id){
-        $data=User::whereId($id);
-        $data->update($request->except(['_token']));
-        return redirect('data-user');
-    }
+    function aksi_update(request $request,$id)
+    {
+        $nis = $request->input('nis');
+        $email = $request->input('email');
+//        dd($nis);
+        $cek_user = User::whereId($id)->first();
+        $cek_nis = User::withTrashed()->whereNis($nis)->first();
+        $cek_email = User::whereEmail($email)->first();
+//        dd($cek_nis);
+        if ($nis == $cek_user->nis) {
+            if ($email == $cek_user->email) {
 
+                $data = User::whereId($id);
+                $data->update($request->except(['_token']));
+                return redirect('/data-user');
+            } else {
+                if ($cek_email) {
+                     return redirect('/data-user')->with('gagal_email','gagal');
+                } else {
+                    $data = User::whereId($id);
+                    $data->update($request->except(['_token']));
+                    return redirect('/data-user');
+                }
+            }
+        } else {
+            if ($cek_nis) {
+                return redirect('/data-user')->with('gagal_nis','gagal');
+            } else {
+                if ($email == $cek_user->email) {
+
+                    $data = User::whereId($id);
+                    $data->update($request->except(['_token']));
+                    return redirect('/data-user');
+
+                } else {
+                    if ($cek_email) {
+                        return redirect('/data_user')->with('gagal_email','gagal');
+                    } else {
+                        $data = User::whereId($id);
+                        $data->update($request->except(['_token']));
+                        return redirect('/data-user');
+                    }
+                }
+            }
+
+
+        }
+
+    }
     function tambah_kelas(){
         $kategori      = $this->kategori();
         $data_kategori = $this->data_kategori;
@@ -150,14 +193,12 @@ class admin extends Controller
     }
     function delete_kategori($id){
         $data=Kategori::whereId($id);
-        $calon=Calon::whereId_kategori($id)->count();
-        if($calon > 0){
-            return redirect('data-kategori')->with('gagal','masih ada user yang ada di kelas tersebut');
-        }else{
+
+
         $data->delete();
 
         return redirect('data-kategori');
-        }
+
     }
     function edit_kategori($id){
 
@@ -212,7 +253,7 @@ class admin extends Controller
             ->join('kelas','kelas.id','=','users.id_kelas')
             ->join('kategori','kategori.id','=','calon.id_kategori')
             ->select('kategori.*','users.*','kelas.*','calon.*')
-            ->where('calon.status','=','2')
+            ->where('calon.status','=','2')->where('kategori.deleted_at','=',null)
             ->get();
 //        dd($data);
         $wakil=Calon::

@@ -1,4 +1,23 @@
 @extends('aplikasi.layout')
+@section('admin')
+<li class="sub-menu" >
+<a href="javascript:;" class="">
+                          <i class="icon_desktop"></i>
+                          <span>FITUR Admin</span>
+                          <span class="menu-arrow arrow_carrot-right"></span>
+                      </a>
+                      <ul class="sub">
+                          <li><a class="" href="/data-kategori">data kategori</a></li>
+                          @yield('sidebar')
+                          <li><a class="" href="/data-kelas">data kelas</a></li>
+                          <li><a class="" href="/data-user">data user</a></li>
+                          <li><a class="" href="/data-pencalon">data pencalonan</a></li>
+                          <li><a class="" href="/data-calon">data kandidat</a></li>
+
+                      </ul>
+                  </li>
+@endsection
+
 @section('content')
 <div class="row">
     <div class="col-md-12">
@@ -17,7 +36,7 @@
                         <tr>
                             <td>Nama Calon</td>
                             <td>:</td>
-                            <td><a>{{$data->name}}</a></td>
+                            <td><a id="calon" href="/profile/{{$data->id_calon}}">{{$data->name}}</a></td>
                         </tr>
                         <tr>
                             <td>Nis calon</td>
@@ -32,7 +51,7 @@
                         <tr>
                             <td>Nama Wakil</td>
                             <td>:</td>
-                            <td>{{$wakil->name}}</td>
+                            <td><a href="/profile/{{$wakil->id_wakil}}">{{$wakil->name}}</a></td>
                         </tr>
                         <tr>
                             <td>Nis wakil</td>
@@ -63,6 +82,7 @@
                         
                     </table>
                     </h3>
+                    <a href="{{URL::Previous()}}" class="btn btn-danger">Back</a>
                     </center>
                     <br>    <br>    <br>
                 </div>

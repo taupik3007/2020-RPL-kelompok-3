@@ -1,4 +1,23 @@
-@extends('aplikasi.layout');
+@extends('aplikasi.layout')
+@section('admin')
+
+<li class="sub-menu active" >
+<a href="javascript:;" class="">
+                          <i class="icon_desktop"></i>
+                          <span>FITUR Admin</span>
+                          <span class="menu-arrow arrow_carrot-right"></span>
+                      </a>
+                      <ul class="sub">
+                          <li><a class="" href="/data-kategori">data kategori</a></li>
+                          @yield('sidebar')
+                          <li><a class="" href="/data-kelas">data kelas</a></li>
+                          <li><a class="" href="/data-user">data user</a></li>
+                          <li><a class="" href="/data-pencalon">data pencalonan</a></li>
+                          <li><a class="" href="/data-calon">data kandidat</a></li>
+
+                      </ul>
+                  </li>
+@endsection
 
 @section('content')
 
@@ -30,7 +49,7 @@
                             <label for="nis" class="col-md-2 col-form-label text-md-right">{{ __('Nama kategori') }}</label>
 
                             <div class="col-md-6">
-                                <input id="nis" type="text" class="form-control @error('kelas') is-invalid @enderror" name="nama_kategori" placeholder="masukan nama kelas" required autocomplete="kelas" autofocus>
+                                <input id="nis" type="text" class="form-control @error('kelas') is-invalid @enderror" name="nama_kategori" placeholder="masukan nama kategori" required autocomplete="kelas" autofocus>
 
                                 @error('kelas')
                                     <span class="invalid-feedback" role="alert">
@@ -49,7 +68,7 @@
                                     {{ __('Tambah') }}
                                 </button>
 
-                                <a href="{{URL::previous()}}" class="btn btn-danger">back</a>
+                                <a href="/data-kategori" class="btn btn-danger">back</a>
                             </div>
                         </div>
 

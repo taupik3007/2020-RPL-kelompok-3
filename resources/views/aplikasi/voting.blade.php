@@ -1,11 +1,33 @@
 
 @extends('aplikasi.layout')
+@section('admin')
+<li class="sub-menu" >
+<a href="javascript:;" class="">
+                          <i class="icon_desktop"></i>
+                          <span>FITUR Admin</span>
+                          <span class="menu-arrow arrow_carrot-right"></span>
+                      </a>
+                      <ul class="sub">
+                          <li><a class="" href="/data-kategori">data kategori</a></li>
+                          @yield('sidebar')
+                          <li><a class="" href="/data-kelas">data kelas</a></li>
+                          <li><a class="" href="/data-user">data user</a></li>
+                          <li><a class="" href="/data-pencalon">data pencalonan</a></li>
+                          <li><a class="" href="/data-calon">data kandidat</a></li>
+
+                      </ul>
+                  </li>
+@endsection
+
 @section('content')
+
 <div class="row">
                 <div class="col-md-12">
                     <section class="panel">
                           <header class="panel-heading">
-                              <h3>Pilih Calon</h3>
+                              <h3> @if(Request::path() == 'voting/'.$view)Pilih Calon
+                              @else Akumulasi Voting
+                                @endif</h3>
 
                           </header>
                     <div class="panel-body">
@@ -26,8 +48,9 @@
 
                     <center>   <img src="{{asset('img/avatar1.jpg')}}" height="200" alt=""></center><br/>
                     <center> <h3> {{$calon->name}}
-                    @foreach($wakil as $wkl)
                     -
+                    @foreach($wakil as $wkl)
+
                     @if($wkl->id==$calon->id)
                     {{$wkl->name}}</h3>
                     @endif

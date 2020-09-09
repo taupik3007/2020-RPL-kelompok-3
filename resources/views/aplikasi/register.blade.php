@@ -1,4 +1,40 @@
 @extends('aplikasi.layout')
+@section('admin')
+<li class="sub-menu active" >
+<a href="javascript:;" class="">
+                          <i class="icon_desktop"></i>
+                          <span>FITUR Admin</span>
+                          <span class="menu-arrow arrow_carrot-right"></span>
+                      </a>
+                      <ul class="sub">
+                          <li><a class="" href="/data-kategori">data kategori</a></li>
+                          @yield('sidebar')
+                          <li><a class="" href="/data-kelas">data kelas</a></li>
+                          <li><a class="" href="/data-user">data user</a></li>
+                          <li><a class="" href="/data-pencalon">data pencalonan</a></li>
+                          <li><a class="" href="/data-calon">data kandidat</a></li>
+
+                      </ul>
+                  </li>
+@endsection
+@section('admin')
+<li class="sub-menu active" >
+<a href="javascript:;" class="">
+                          <i class="icon_desktop"></i>
+                          <span>FITUR Admin</span>
+                          <span class="menu-arrow arrow_carrot-right"></span>
+                      </a>
+                      <ul class="sub">
+                          <li><a class="" href="/data-kategori">data kategori</a></li>
+                          @yield('sidebar')
+                          <li><a class="" href="/data-kelas">data kelas</a></li>
+                          <li><a class="" href="/data-user">data user</a></li>
+                          <li><a class="" href="/data-pencalon">data pencalonan</a></li>
+                          <li><a class="" href="/data-calon">data kandidat</a></li>
+
+                      </ul>
+                  </li>
+@endsection
 
 @section('content')
 
@@ -64,27 +100,7 @@
                             </div>
                         </div>
 
-                        <div class="form-group row">
-                            <label for="password" class="col-md-2 col-form-label text-md-right">{{ __('Password') }}</label>
 
-                            <div class="col-md-6">
-                                <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="new-password">
-
-                                @error('password')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
-                            </div>
-                        </div>
-
-                        <div class="form-group row">
-                            <label for="password-confirm" class="col-md-2 col-form-label text-md-right">{{ __('Confirm Password') }}</label>
-
-                            <div class="col-md-6">
-                                <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required autocomplete="new-password">
-                            </div>
-                        </div>
 
                          <div class="form-group row">
                                                     <label for="password" class="col-md-2 col-form-label text-md-right">{{ __('Level') }}</label>
@@ -102,7 +118,7 @@
                                                     </div>
                                                 </div>
                           <div class="form-group row">
-                                                                             <label for="password" class="col-md-2 col-form-label text-md-right">{{ __('kategori') }}</label>
+                                                                             <label for="password" class="col-md-2 col-form-label text-md-right">{{ __('Kelas') }}</label>
 
                                                                              <div class="col-md-6">
                                                                                  <select id="level"  class="form-control @error('kelas') is-invalid @enderror" name="kelas" required autocomplete="level">
@@ -123,7 +139,7 @@
                                 <button type="submit" class="btn btn-primary">
                                     {{ __('Register') }}
                                 </button>
-                                <a href="{{URL::previous()}}" class="btn btn-danger">back</a>
+                                <a href="/data-user" class="btn btn-danger">back</a>
                             </div>
                         </div>
                     </form>

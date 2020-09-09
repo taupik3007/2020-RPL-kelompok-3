@@ -4,7 +4,7 @@
             </div>
 
             <!--logo start-->
-            <a href="index.html" class="logo">VOTING SMK MAHAPUTRA</a>
+            <a href="/home" class="logo"><img src="img/header.png" width="150" alt=""/></a>
             <!--logo end-->
 
             <div class="nav search-row" id="top_menu">

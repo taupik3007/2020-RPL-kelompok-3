@@ -23,10 +23,10 @@ class registrasi extends Controller
             'nis'=>['required','min:3','unique:users'],
             'name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
-            'password' => ['required', 'string', 'min:8', 'confirmed'],
+
         ]);
         $woy=$request->input('name');
-        $pass=$request->input('password');
+
 
         $nis=$request->input('nis');
         $email=$request->input('email');
@@ -37,7 +37,7 @@ class registrasi extends Controller
         $data->email = $email;
         $data->id_kelas=$request->input('kelas');
 
-        $data->password = BCRYPT($pass);
+        $data->password = BCRYPT('12345678');
         $data->level=$level;
         $data->save();
         return redirect('data-user')->with('sukses','data berhasil ditambah');

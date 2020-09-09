@@ -1,4 +1,22 @@
 @extends('aplikasi.layout')
+@section('admin')
+<li class="sub-menu" >
+<a href="javascript:;" class="">
+                          <i class="icon_desktop"></i>
+                          <span>FITUR Admin</span>
+                          <span class="menu-arrow arrow_carrot-right"></span>
+                      </a>
+                      <ul class="sub">
+                          <li><a class="" href="/data-kategori">data kategori</a></li>
+                          @yield('sidebar')
+                          <li><a class="" href="/data-kelas">data kelas</a></li>
+                          <li><a class="" href="/data-user">data user</a></li>
+                          <li><a class="" href="/data-pencalon">data pencalonan</a></li>
+                          <li><a class="" href="/data-calon">data kandidat</a></li>
+
+                      </ul>
+                  </li>
+@endsection
 @section('content')
 
                 <div class="row">
@@ -7,12 +25,12 @@
                     <div class="profile-widget profile-widget-info">
                           <div class="panel-body">
                             <div class="col-lg-2 col-sm-2">
-                              <h4>{{Auth()->user()->name}}</h4>
+                              <h4>{{$data_user->name}}</h4>
                               <div class="follow-ava">
                                   <img src="img/profile-widget-avatar.jpg" alt="">
                               </div>
                               <h6>
-                              @if(Auth()->user()->level == 1)
+                              @if($data_user->level == 1)
                               Administrator
                               @else
                               Siswa
@@ -22,7 +40,7 @@
                             <div class="col-lg-4 col-sm-4 follow-info">
                             @if($data_user->id != Auth()->user()->id)
 
-                                <p>Halo aku {{Auth()->user()->name}}! salam kenal .</p>
+                                <p>Halo aku {{$data_user->name}}! salam kenal .</p>
                             @endif
 
                                 <p>@johnsmith</p>
@@ -50,13 +68,14 @@
                                           Profile
                                       </a>
                                   </li>
+                                    @if($data_user->id==auth()->user()->id)
                                   <li class="">
                                       <a data-toggle="tab" href="#edit-profile">
                                           <i class="icon-envelope"></i>
                                           Edit Profile
                                       </a>
                                   </li>
-                                  @if($data_user->id==auth()->user()->id)
+
                                   <li class="">
                                       <a data-toggle="tab" href="#password">
                                           <i class="icon-envelope"></i>
@@ -74,6 +93,42 @@
                                     <section class="panel">
 
                                       <div class="panel-body bio-graph-info">
+                                       @if(session('gagal_email'))
+                                                          <div class="alert alert-block alert-danger fade in">
+                                                                                                                                   <button data-dismiss="alert" class="close close-sm" type="button">
+                                                                                                                                       <i class="icon-remove"></i>
+                                                                                                                                   </button>
+                                                                                                                                  Email sudah di gunakan
+                                                                                                                               </div>
+                                                                                                                               @elseif(session('gagal_psw'))
+                                                          <div class="alert alert-block alert-danger fade in">
+                                                                                                                                   <button data-dismiss="alert" class="close close-sm" type="button">
+                                                                                                                                       <i class="icon-remove"></i>
+                                                                                                                                   </button>
+                                                                                                                                  Pssword salah
+                                                                                                                               </div>
+                                            @elseif(session('gagal_nis'))
+                                                      <div class="alert alert-block alert-danger fade in">
+                                                                                                                               <button data-dismiss="alert" class="close close-sm" type="button">
+                                                                                                                                   <i class="icon-remove"></i>
+                                                                                                                               </button>
+                                                                                                                              Nis telah di gunakan
+                                                                                                                           </div>
+
+                                              @elseif(session('berhasil_psw'))
+                                                                                                  <div class="alert alert-block alert-success fade in">
+                                                                                                                                                                           <button data-dismiss="alert" class="close close-sm" type="button">
+                                                                                                                                                                               <i class="icon-remove"></i>
+                                                                                                                                                                           </button>
+                                                                                                                                                                          berhasil ubah password                                                                                                                                                                       </div>
+                                                                                                                           @elseif(session('berhasil'))
+                                                      <div class="alert alert-block alert-success fade in">
+                                                                                                                               <button data-dismiss="alert" class="close close-sm" type="button">
+                                                                                                                                   <i class="icon-remove"></i>
+                                                                                                                               </button>
+                                                                                                                              Berhasil update
+                                                                                                                           </div>
+                                                                                                                           @endif
                                           <h1>Bio Data</h1>
                                           <div class="row">
                                               <div class="bio-row">
@@ -196,16 +251,16 @@
                                     <section class="panel">
                                           <div class="panel-body bio-graph-info">
                                               <h1> Profile Info</h1>
-                                               <form class="" action="/update_profile/{{Auth()->user()->id}}" method="POST" >
+                                               <form class="" action="/ubah-password" method="POST" >
                                                                      {{csrf_field()}}
 
                                                                      <div class="form-group row">
-                                                                         <label for="nis" class="col-md-2 col-form-label text-md-right">{{ __('Nis') }}</label>
+                                                                         <label for="psw" class="col-md-2 col-form-label text-md-right">{{ __('password lama') }}</label>
 
                                                                          <div class="col-md-6">
-                                                                             <input id="nis" type="text" class="form-control @error('nis') is-invalid @enderror" name="nis" value="{{$data_user->nis}}" required autocomplete="nis" autofocus>
+                                                                             <input id="psw" type="password" class="form-control @error('psw') is-invalid @enderror" name="psw" value="" required autocomplete="nis" autofocus>
 
-                                                                             @error('nis')
+                                                                             @error('psw')
                                                                                  <span class="invalid-feedback" role="alert">
                                                                                      <strong>{{ $message }}</strong>
                                                                                  </span>

@@ -12,6 +12,7 @@ use App\Kelas;
 use App\Calon;
 
 use App\wakil;
+use Illuminate\Support\Facades\Hash;
 
 
 
@@ -180,9 +181,51 @@ class fungsi extends Controller
     function update_profile(request $request,$id){
 
 
-        $data=User::whereId($id);
-        $data->update($request->except(['_token']));
-        return redirect("/profile/$id");
+        $nis = $request->input('nis');
+        $email = $request->input('email');
+//        dd($nis);
+        $cek_user = User::whereId($id)->first();
+        $cek_nis = User::withTrashed()->whereNis($nis)->first();
+        $cek_email = User::whereEmail($email)->first();
+//        dd($cek_nis);
+        if ($nis == $cek_user->nis) {
+            if ($email == $cek_user->email) {
+
+                $data = User::whereId($id);
+                $data->update($request->except(['_token']));
+                return redirect('/profile/'.$id)->with('berhasil','berhasil');
+            } else {
+                if ($cek_email) {
+                    return redirect('/profile/'.$id)->with('gagal_email','gagal');
+                } else {
+                    $data = User::whereId($id);
+                    $data->update($request->except(['_token']));
+                    return redirect('/profile/'.$id)->with('berhasil','berhasil');
+                }
+            }
+        } else {
+            if ($cek_nis) {
+                return redirect('/profile/'.$id)->with('gagal_nis','gagal');
+            } else {
+                if ($email == $cek_user->email) {
+
+                    $data = User::whereId($id);
+                    $data->update($request->except(['_token']));
+                    return redirect('/profile/'.$id)->with('berhasil','berhasil');
+
+                } else {
+                    if ($cek_email) {
+                        return redirect('/data_user')->with('gagal_email','gagal');
+                    } else {
+                        $data = User::whereId($id);
+                        $data->update($request->except(['_token']));
+                        return redirect('/profile/'.$id)->with('berhasil','berhasil');
+                    }
+                }
+            }
+
+
+        }
     }
     function akumulasi($id){
         $kategori      = $this->kategori();
@@ -210,6 +253,27 @@ class fungsi extends Controller
             ->where('calon.status','=','2','and','calon.id_kategori','=',$id)
             ->get();
         return view('aplikasi.voting',compact(['view','data','data_kategori','wakil','user','hitung']));
+
+    }
+
+    function ubah_password(request $request){
+        $this->validate($request,[
+
+                 'password' => ['required', 'string', 'min:8', 'confirmed'],
+        ]);
+
+
+        $password=$request->input('psw');
+
+        if(!\Hash::check($password,auth()->user()->password)){
+
+            return redirect('/profile/'.auth()->user()->id)->with('gagal_psw','gagal');
+        }
+        $new_password=$request->input('password');
+        $user=User::whereId(auth()->user()->id)->first();
+        $user->password=bcrypt($new_password);
+        $user->update();
+        return redirect('/profile/'.auth()->user()->id)->with('berhasil_psw','berhasil');
 
     }
 

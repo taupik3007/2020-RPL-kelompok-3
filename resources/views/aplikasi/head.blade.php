@@ -6,9 +6,9 @@
     <meta name="description" content="Karmanta - Bootstrap 3 Responsive Admin Template">
     <meta name="author" content="GeeksLabs">
     <meta name="keyword" content="Karmanta, Dashboard, Admin, Template, Theme, Bootstrap, Responsive, Retina, Minimal">
-    <link rel="shortcut icon" href="img/favicon.png">
+    <link rel="shortcut icon" href="img/head.png">
 
-    <title>Karmanta - Bootstrap 3 Responsive Admin Template</title>
+    <title >E-Vote SMK MAHAPUTRA</title>
 
     <!-- Bootstrap CSS -->    
     <link href="{{ asset('css/bootstrap.min.css')}}" rel="stylesheet">
