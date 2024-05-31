@@ -19,6 +19,9 @@ use Auth;
 class admin extends Controller
 {
     private function kategori(){
+    $coba2 = "gararetek  awikwok";
+
+
         $this->data_kategori=Kategori::all();
         $this->user=Akumulasi::whereId_user(auth()->user()->id)->get();
         $this->hitung_user=Akumulasi::where('id_user','=',Auth::user()->id)->count();
